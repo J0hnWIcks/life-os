@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- Palette --- */
+  --color-fog: #edeee9;      /* base background */
+  --color-paper: #f7f7f4;    /* elevated surface */
+  --color-ink: #14181a;      /* primary text */
+  --color-ink-soft: #3a4144; /* secondary text */
+  --color-dusk: #5b6472;     /* muted / borders */
+  --color-dusk-light: #d8dad4;
+  --color-moss: #3f5d4e;     /* progress / done / primary accent */
+  --color-moss-light: #e4ebe6;
+  --color-ember: #c4592f;    /* priority / urgent */
+  --color-ember-light: #f5e2d8;
+  --color-signal: #e8b94a;   /* today marker / highlight */
+  --color-signal-light: #faf1dc;
+
+  /* --- Type --- */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-fog);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dusk-light) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-dusk-light);
+  border-radius: 8px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-moss);
+  outline-offset: 2px;
+}
+
+/* --- Alternate GUI aesthetic modes, toggled via [data-theme] on <html> --- */
+
+[data-theme="midnight"] {
+  --color-fog: #14181a;
+  --color-paper: #1c2225;
+  --color-ink: #edeee9;
+  --color-ink-soft: #c9cdc6;
+  --color-dusk: #8a9199;
+  --color-dusk-light: #2b3134;
+  --color-moss: #6fa98a;
+  --color-moss-light: #22332c;
+  --color-ember: #e0805a;
+  --color-ember-light: #3a2620;
+  --color-signal: #f0c563;
+  --color-signal-light: #332a18;
+}
+
+[data-theme="slate"] {
+  --color-fog: #eef1f4;
+  --color-paper: #ffffff;
+  --color-ink: #1b2430;
+  --color-ink-soft: #48566a;
+  --color-dusk: #7c8798;
+  --color-dusk-light: #d7dee6;
+  --color-moss: #35618c;
+  --color-moss-light: #e1eaf3;
+  --color-ember: #b54b3c;
+  --color-ember-light: #f5e1dd;
+  --color-signal: #d9a441;
+  --color-signal-light: #f7eeda;
+}
+
+[data-theme="sand"] {
+  --color-fog: #f3ece2;
+  --color-paper: #fbf7f1;
+  --color-ink: #2b2118;
+  --color-ink-soft: #5c4e40;
+  --color-dusk: #8c7c6a;
+  --color-dusk-light: #e3d6c4;
+  --color-moss: #b4622e;
+  --color-moss-light: #f1e1d2;
+  --color-ember: #8a3b2e;
+  --color-ember-light: #eedad2;
+  --color-signal: #c99a3e;
+  --color-signal-light: #f5e9ce;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

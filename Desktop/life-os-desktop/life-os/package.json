@@ -1,0 +1,75 @@
+{
+  "name": "life-os",
+  "version": "1.0.0",
+  "description": "Your personal Life OS — a local-first command center for tasks, projects, documents, and knowledge.",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n server,client -c green,cyan \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "start": "concurrently -n server,client -c green,cyan \"npm run start --prefix server\" \"npm run dev --prefix client\"",
+    "electron:dev": "concurrently -k -n server,client,electron -c green,cyan,magenta \"npm run dev --prefix server\" \"npm run dev --prefix client\" \"wait-on http://localhost:5173 && cross-env ELECTRON_DEV_URL=http://localhost:5173 electron .\"",
+    "build:client": "npm run build --prefix client",
+    "build:server": "node scripts/build-server.js",
+    "build": "npm run build:client && npm run build:server",
+    "dist": "npm run build && electron-builder",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:linux": "npm run build && electron-builder --linux"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "adm-zip": "^0.5.16",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "multer": "^2.2.0",
+    "nanoid": "3.3.7"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3",
+    "cross-env": "^7.0.3",
+    "electron": "^33.4.0",
+    "electron-builder": "^25.1.8",
+    "esbuild": "^0.28.1",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.lifeos.app",
+    "productName": "Life OS",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**/*",
+      "server-dist/**/*",
+      "client/dist/**/*",
+      "package.json"
+    ],
+    "icon": "build/icon.png",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "target": [
+        "AppImage"
+      ],
+      "category": "Office"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

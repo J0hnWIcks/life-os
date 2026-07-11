@@ -1,0 +1,12 @@
+{
+  "name": "",
+  "quoteOfDay": true,
+  "weatherLocation": "",
+  "theme": "meadow",
+  "customQuotes": [],
+  "geminiApiKey": "",
+  "notifyTimeBlocks": false,
+  "googleClientId": "",
+  "pinnedSections": ["dashboard", "planner", "calendar", "projects", "documents", "knowledge"],
+  "documentCategories": ["School", "Personal", "Business", "Financial", "Medical", "Legal", "Other"]
+}
