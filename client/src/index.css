@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- Palette --- */
+  --color-fog: #edeee9;      /* base background */
+  --color-paper: #f7f7f4;    /* elevated surface */
+  --color-ink: #14181a;      /* primary text */
+  --color-ink-soft: #3a4144; /* secondary text */
+  --color-dusk: #5b6472;     /* muted / borders */
+  --color-dusk-light: #d8dad4;
+  --color-moss: #3f5d4e;     /* progress / done / primary accent */
+  --color-moss-light: #e4ebe6;
+  --color-ember: #c4592f;    /* priority / urgent */
+  --color-ember-light: #f5e2d8;
+  --color-signal: #e8b94a;   /* today marker / highlight */
+  --color-signal-light: #faf1dc;
+
+  /* --- Extra swatches for user-customizable calendar event colors --- */
+  --color-cal-rose: #b5556b;
+  --color-cal-rose-light: #f2e2e5;
+  --color-cal-amber: #c98a2c;
+  --color-cal-amber-light: #f3e7d2;
+  --color-cal-teal: #2f7d78;
+  --color-cal-teal-light: #dcece9;
+  --color-cal-indigo: #4a5a9e;
+  --color-cal-indigo-light: #e2e4f2;
+  --color-cal-plum: #7c4a8a;
+  --color-cal-plum-light: #ecdff0;
+  --color-cal-sky: #3a7ca8;
+  --color-cal-sky-light: #dcebf2;
+
+  /* --- Type --- */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-fog);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dusk-light) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-dusk-light);
+  border-radius: 8px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-moss);
+  outline-offset: 2px;
+}
+
+/* --- Alternate GUI aesthetic modes, toggled via [data-theme] on <html> --- */
+
+[data-theme="midnight"] {
+  --color-fog: #14181a;
+  --color-paper: #1c2225;
+  --color-ink: #edeee9;
+  --color-ink-soft: #c9cdc6;
+  --color-dusk: #8a9199;
+  --color-dusk-light: #2b3134;
+  --color-moss: #6fa98a;
+  --color-moss-light: #22332c;
+  --color-ember: #e0805a;
+  --color-ember-light: #3a2620;
+  --color-signal: #f0c563;
+  --color-signal-light: #332a18;
+
+  --color-cal-rose: #d97e93;
+  --color-cal-rose-light: #3a232a;
+  --color-cal-amber: #e0ac5a;
+  --color-cal-amber-light: #362c19;
+  --color-cal-teal: #5fb3ac;
+  --color-cal-teal-light: #1c322f;
+  --color-cal-indigo: #8a97d6;
+  --color-cal-indigo-light: #262b42;
+  --color-cal-plum: #b285c2;
+  --color-cal-plum-light: #33253a;
+  --color-cal-sky: #7ab3d9;
+  --color-cal-sky-light: #1f2f3a;
+}
+
+[data-theme="slate"] {
+  --color-fog: #eef1f4;
+  --color-paper: #ffffff;
+  --color-ink: #1b2430;
+  --color-ink-soft: #48566a;
+  --color-dusk: #7c8798;
+  --color-dusk-light: #d7dee6;
+  --color-moss: #35618c;
+  --color-moss-light: #e1eaf3;
+  --color-ember: #b54b3c;
+  --color-ember-light: #f5e1dd;
+  --color-signal: #d9a441;
+  --color-signal-light: #f7eeda;
+
+  --color-cal-rose: #b6526b;
+  --color-cal-rose-light: #f2e1e6;
+  --color-cal-amber: #c78a3a;
+  --color-cal-amber-light: #f2e5d2;
+  --color-cal-teal: #2f7f85;
+  --color-cal-teal-light: #dbebec;
+  --color-cal-indigo: #4f5fa8;
+  --color-cal-indigo-light: #e2e5f3;
+  --color-cal-plum: #7d4f96;
+  --color-cal-plum-light: #eae0f0;
+  --color-cal-sky: #3f76a8;
+  --color-cal-sky-light: #dce8f2;
+}
+
+[data-theme="sand"] {
+  --color-fog: #f3ece2;
+  --color-paper: #fbf7f1;
+  --color-ink: #2b2118;
+  --color-ink-soft: #5c4e40;
+  --color-dusk: #8c7c6a;
+  --color-dusk-light: #e3d6c4;
+  --color-moss: #b4622e;
+  --color-moss-light: #f1e1d2;
+  --color-ember: #8a3b2e;
+  --color-ember-light: #eedad2;
+  --color-signal: #c99a3e;
+  --color-signal-light: #f5e9ce;
+
+  --color-cal-rose: #a8506a;
+  --color-cal-rose-light: #eddadf;
+  --color-cal-amber: #b97a2e;
+  --color-cal-amber-light: #eee0cb;
+  --color-cal-teal: #3f7d72;
+  --color-cal-teal-light: #dde8e3;
+  --color-cal-indigo: #5a5a96;
+  --color-cal-indigo-light: #e2e1ee;
+  --color-cal-plum: #7a4a80;
+  --color-cal-plum-light: #e9dde9;
+  --color-cal-sky: #4a7796;
+  --color-cal-sky-light: #dde6ea;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
